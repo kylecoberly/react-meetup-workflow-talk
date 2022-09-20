@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build_deploy_frontend:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.1
+      - name: Build app
+        working-directory: frontend
+        run: npm ci && npm run build
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2.3
+        with:
+          publish-dir: frontend/build
+          production-branch: master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  # build_deploy_api:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: akhileshns/heroku-deploy@v3.12.12
+  #       with:
+  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+  #         heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+  #         heroku_email: ${{ secrets.HEROKU_EMAIL }}
+  #         appdir: backend
