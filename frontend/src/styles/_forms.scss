@@ -1,0 +1,40 @@
+@use "./sizes";
+@use "./colors";
+@use "./typography";
+
+$max-form-width: 400px;
+
+@mixin form {
+  display: flex;
+  margin-bottom: sizes.$xxxxl;
+  max-width: $max-form-width;
+  flex-flow: column nowrap;
+  .form-input {
+    width: 100%;
+  }
+  .form-submit {
+    align-self: flex-end;
+  }
+  .error {
+    @include form-error;
+  }
+}
+
+@mixin form-control {
+  display: block;
+  padding: sizes.$xs;
+  margin-bottom: sizes.$xs;
+  border: none;
+  border-bottom: 1px solid colors.$primary-7;
+  background-color: colors.$white;
+  width: 100%;
+  @include typography.body-font;
+  &:focus {
+    border-bottom: 2px solid colors.$primary-7;
+  }
+}
+
+@mixin form-error {
+  color: colors.$failure-5;
+  margin-top: sizes.$large;
+}

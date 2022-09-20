@@ -1,0 +1,58 @@
+@use "./sizes";
+@use "./colors";
+
+@mixin button-shadow-small {
+  box-shadow: 0 1px 0 colors.$grey-6;
+  &:active {
+    box-shadow: 0 -1px 0 colors.$grey-8;
+  }
+}
+
+@mixin button-primary {
+  width: fit-content;
+  display: inline-block;
+  background-color: colors.$primary-3;
+  color: colors.$primary-10;
+  font-weight: 700;
+  border: none;
+  border-radius: sizes.$border-radius;
+  transition: background-color sizes.$transition;
+  padding: sizes.$s1 sizes.$s3;
+  cursor: pointer;
+  &:active, &:hover {
+    background-color: colors.$primary-4;
+  }
+}
+
+@mixin button-secondary {
+  width: fit-content;
+  display: inline-block;
+  background-color: colors.$primary-8;
+  color: colors.$primary-1;
+  border: none;
+  border-radius: sizes.$border-radius;
+  transition: background-color sizes.$transition;
+  padding: sizes.$s1 sizes.$s3;
+  cursor: pointer;
+  &:active, &:hover {
+    background-color: colors.$primary-7;
+  }
+}
+
+@mixin button-active-primary {
+  background-color: colors.$primary-3;
+  transition: background-color sizes.$transition;
+  color: colors.$white;
+  text-decoration: none;
+  &:active, &:hover {
+    background-color: colors.$primary-4;
+  }
+}
+
+@mixin button-active-neutral {
+  background-color: colors.$grey-4;
+  transition: background-color sizes.$transition;
+  &:active, &:hover {
+    background-color: colors.$grey-5;
+  }
+}
