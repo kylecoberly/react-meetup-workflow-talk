@@ -1,0 +1,57 @@
+{
+  "default": {
+    "parallel": 6,
+    "publishQuiet": true,
+    "worldParameters": {
+      "baseURL": "https://kylecoberly.com",
+      "browser": "chromium",
+      "device": {
+        "type": "desktop",
+        "height": 720,
+        "width": 180
+      }
+    }
+  },
+  "desktop": {
+    "worldParameters": {
+      "device": {
+        "type": "desktop",
+        "height": 720,
+        "width": 180
+      }
+    }
+  },
+  "phone": {
+    "worldParameters": {
+      "device": {
+        "type": "phone",
+        "height": 568,
+        "width": 320
+      }
+    }
+  },
+  "tablet": {
+    "worldParameters": {
+      "device": {
+        "type": "tablet",
+        "height": 1024,
+        "width": 768
+      }
+    }
+  },
+  "chromium": {
+    "worldParameters": {
+      "browser": "chromium"
+    }
+  },
+  "firefox": {
+    "worldParameters": {
+      "browser": "firefox"
+    }
+  },
+  "webkit": {
+    "worldParameters": {
+      "browser": "webkit"
+    }
+  }
+}
